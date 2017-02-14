@@ -1,3 +1,7 @@
 node_modules/
 bower_components/
 wwwroot/
+.vscode/chrome/
+test/_reports
+test/coverage
+test/debug.log
