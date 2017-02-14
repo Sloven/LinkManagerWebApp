@@ -1,0 +1,29 @@
+<div ng-controller="lookupController as look">
+    <md-list flex>
+        <div layout="row" layout-align="center center">
+                <md-input-container flex>
+                    <input ng-model="look.searchOrAdd" type="text" placeholder="Search. To create new Link press Add button" />
+                </md-input-container>
+                <md-button flex="10" type="text" style="text-align:center" ng-click="look.addURL(look.searchOrAdd)">Add link</md-button>
+        </div>
+
+        <md-list-item ng-repeat="link in look.links" ng-click="link.isExpanded = !link.isExpanded">
+
+            <div layout="column" flex>
+                <div layout="row">
+                    <div flex="25">{{link.URL}}</div>
+                    <div flex>{{link.Title}}</div>
+                    <div flex="25">{{link.CreatedAt}}</div>
+                </div>
+                <div layout="row" class="md-list-item-text compact" ng-show="link.isExpanded">
+                    <div layout="column" flex>
+                        <div> Show or hide me</div>
+                        <md-button> Show or hide me</md-button>
+                        <div> Show or hide me</div>
+                        <div> Show or hide me</div>
+                    </div>
+                </div>
+            </div>
+        </md-list-item>
+    </md-list>
+</div>

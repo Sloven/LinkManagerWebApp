@@ -1,0 +1,39 @@
+﻿<div ng-controller="accountController as acc" layout="column" layout-align="center center" layout-fill style="min-height: 500px">
+    <form name="acc.form">
+        <div class="loginBox md-whiteframe-z1" layout="column">
+            <md-toolbar ui-sref="main.app">
+                <h2 class="md-toolbar-tools">
+                    Link manager
+                </h2>
+            </md-toolbar>
+            <md-content class="md-padding" layot="column">
+                <div ng-messages="acc" style="color:rgb(221, 44, 0);">
+                    <div ng-message="loginError" role="alert">{{acc.loginError}}</div>
+                </div>
+
+                <md-input-container class="md-block">
+                    <input md-no-asterisk ng-model="acc.username" required name="username" type="text" placeholder="Username" />
+                    <div ng-messages="acc.form.username.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <input md-no-asterisk ng-model="acc.password" required name="password" type="password" placeholder="Password" />
+                    <div ng-messages="acc.form.password.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-raised md-primary" ng-click="acc.login()">Login</md-button>
+                    <div flex></div>
+                    <md-button>Forgot Password</md-button>
+                    <md-button ui-sref="main.register">Sign up</md-button>
+                </div>
+
+
+            </md-content>
+        </div>
+
+    </form>
+
+</div>

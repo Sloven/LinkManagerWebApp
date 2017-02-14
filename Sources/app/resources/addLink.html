@@ -1,0 +1,8 @@
+﻿<div ng-controller="linkController as lnk">
+    <h1>Add link</h1>
+    <input type="text" placeholder="Past URL" ng-model="lnk.link.URL"/>
+    {{lnk.link.URL}}
+    <md-button ng-click="lnk.addLink()">
+        Add
+    </md-button>
+</div>

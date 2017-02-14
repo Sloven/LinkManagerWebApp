@@ -1,0 +1,5 @@
+{
+    "coverage": ["test/coverage/report-lcov/lcov.info"],
+    "sourcemapped": ["wwwroot/all.js.map"],
+    "automaticallyShow": true
+}

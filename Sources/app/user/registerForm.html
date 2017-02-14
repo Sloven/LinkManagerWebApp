@@ -1,0 +1,18 @@
+﻿<form name="registerForm" ng-controller="accountController as acc">
+
+    <div ui-sref="main.app">
+        <ng-md-icon icon="menu"></ng-md-icon>
+        <h2>
+            <span>Link Manager</span>
+        </h2>
+    </div>
+
+    <input type="text" ng-model="acc.username" placeholder="username"><br>
+    <input type="text" ng-model="acc.email" placeholder="email"><br>
+    <input type="password" ng-model="acc.password" placeholder="password"><br>
+    <input type="password" ng-model="acc.confirmPassword" placeholder="confirm password"><br>
+
+    <br>
+    <md-button ng-click="acc.register()">Register</md-button>
+    <md-button ui-sref="main.login">Login</md-button>
+</form>

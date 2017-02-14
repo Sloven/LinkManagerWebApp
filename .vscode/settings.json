@@ -1,0 +1,9 @@
+{
+    "lcov.path": "test/coverage/report-lcov/lcov.info",
+    "lcov.watch": [{
+        "pattern": "sources/**/*.js"
+        //"command": "npm run test-coverage"
+    }],
+    //"lcov.sourceMaps": true,
+    "lcov.branchCoverage": "full"
+}

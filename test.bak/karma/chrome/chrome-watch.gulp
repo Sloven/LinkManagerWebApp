@@ -1,0 +1,6 @@
+
+module.exports = function karmaPsChrome_Gulp(gulp,plugins,gulpConfig){
+    plugins.util.log('test');
+    //return plugins.shell.task('powershell -Command "./test/karma/chrome/chrome-watch.ps1"');
+    return plugins.shell.task('powershell -Command "./karma/chrome/chrome-watch.ps1"');
+}

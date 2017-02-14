@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for sources\app\services\interceptor.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">sources/app/services/</a> interceptor.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">13.64% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">16.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">13.64% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/22</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">﻿<span class="fstat-no" title="function not covered" >function interceptor($location, $injector, authService,demoModeService) {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+        request: <span class="fstat-no" title="function not covered" >function (config) {</span>
+<span class="cstat-no" title="statement not covered" >            var token = authService.getToken();</span>
+<span class="cstat-no" title="statement not covered" >            if (config.url.indexOf("api") &gt; 0 &amp;&amp; token) {</span>
+<span class="cstat-no" title="statement not covered" >                config.headers.Authorization = "Bearer " + token;</span>
+            }
+&nbsp;
+            //show loading bar
+            //showWait($mdDialog);
+<span class="cstat-no" title="statement not covered" >            return config;</span>
+        },
+&nbsp;
+        requestError: <span class="fstat-no" title="function not covered" >function (config) {</span>
+<span class="cstat-no" title="statement not covered" >            if (config.url.indexOf('api') &gt; 0 &amp;&amp; (config.status === 401 || config.status === 403)) {</span>
+<span class="cstat-no" title="statement not covered" >                authService.logout();</span>
+<span class="cstat-no" title="statement not covered" >                $injector.get('$state').transitionTo('main.login');</span>
+            }
+&nbsp;
+            //hideWait($mdDialog);
+<span class="cstat-no" title="statement not covered" >            return config;</span>
+        },
+&nbsp;
+        response: <span class="fstat-no" title="function not covered" >function (res) {</span>
+<span class="cstat-no" title="statement not covered" >            if (res.data &amp;&amp; res.data.access_token) {</span>
+<span class="cstat-no" title="statement not covered" >                authService.saveToken(res.data.access_token);</span>
+            }
+            //hideWait($mdDialog);
+<span class="cstat-no" title="statement not covered" >            return res;</span>
+        },
+&nbsp;
+        responseError: <span class="fstat-no" title="function not covered" >function (res) {</span>
+<span class="cstat-no" title="statement not covered" >            if(!res.config &amp;&amp; res.message)</span>
+            {
+<span class="cstat-no" title="statement not covered" >                console.error(res.message);</span>
+<span class="cstat-no" title="statement not covered" >                return res;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (res.config.url.indexOf('api') &amp;&amp; (res.status === 401 || res.status === 403)) {</span>
+<span class="cstat-no" title="statement not covered" >                authService.logout();</span>
+<span class="cstat-no" title="statement not covered" >                $injector.get('$state').transitionTo('main.login');</span>
+            }
+            //hideWait($mdDialog);
+<span class="cstat-no" title="statement not covered" >            return res;</span>
+        }
+    }
+}
+&nbsp;
+&nbsp;
+//function hideWait($mdDialog) {
+//        $mdDialog.cancel();
+//};
+&nbsp;
+//function showWait($mdDialog) {
+//    $mdDialog.show({
+//            template: '&lt;md-dialog id="plz_wait" style="background-color:transparent;box-shadow:none"&gt;' +
+//                '&lt;div layout="row" layout-sm="column" layout-align="center center" aria-label="wait"&gt;' +
+//                '&lt;md-progress-circular md-mode="indeterminate" &gt;&lt;/md-progress-circular&gt;' +
+//                '&lt;/div&gt;' +
+//                '&lt;/md-dialog&gt;',
+//            parent: angular.element(document.body),
+//            clickOutsideToClose: false,
+//            fullscreen: false
+//        })
+//        .then(function(answer) {
+&nbsp;
+//        });
+//};
+&nbsp;
+&nbsp;
+&nbsp;
+app.factory('interceptor', interceptor)
+    .config(function($httpProvider) {
+        $httpProvider.interceptors.push('interceptor');
+    });</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Feb 14 2017 12:47:15 GMT+0200 (FLE Standard Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

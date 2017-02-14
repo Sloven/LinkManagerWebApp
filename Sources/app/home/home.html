@@ -1,0 +1,8 @@
+﻿<div ng-controller="homeController as home">
+        <div layout="row" layout-align="center center">
+            <md-input-container flex>
+                <input ng-model="home.obeyLink" type="text" placeholder="Add link to try" />
+            </md-input-container>
+            <md-button flex="10" type="text" style="text-align:center" ui-sref="main.app.demo({ tryResource: home.obeyLink })">OBEY</md-button>
+        </div>
+</div>
