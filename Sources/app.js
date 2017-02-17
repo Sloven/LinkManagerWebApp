@@ -12,7 +12,7 @@ app.config(function ($locationProvider, $stateProvider, $urlRouterProvider, $url
     $locationProvider.html5Mode(true);
 });
 
-app.config(function ($mdThemingProvider) {
+app.config(function ($mdThemingProvider){
     $mdThemingProvider.theme('default')
      .primaryPalette('blue-grey')
      .accentPalette('orange')
@@ -24,9 +24,7 @@ app.config(function ($mdThemingProvider) {
 // }]);
 
 
-function routeConfig($stateProvider, $urlRouterProvider) {
-
-    //$urlRouterProvider.otherwise('/');
+function routeConfig($stateProvider) {
 
     $stateProvider
         .state('main',

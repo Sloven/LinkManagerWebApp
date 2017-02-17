@@ -4,6 +4,12 @@
         "es6": true,
         "jasmine": true
     },
+    "globals": {
+        "angular": false,
+        "app" : false,
+        "require": false
+
+    },
     "extends": ["eslint:recommended"],
     "rules": {
         "indent": [

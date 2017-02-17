@@ -3,7 +3,11 @@
         "target": "ES6"
     },
      "include": [
-        "sources/**/*.js"
+        "sources/**/*.js",
+        "test/unit",
+        "test/e2e",
+        "test/fakes",
+        "test/zsettings"
     ]
 
 }

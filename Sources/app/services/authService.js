@@ -12,7 +12,7 @@
             return JSON.parse($window.atob(base64));
         }
         return null;
-    }
+    };
 
     self.isAuthed = function() {
         var token = self.getToken();
@@ -25,7 +25,7 @@
     };
     self.logout = function () {
         storageService.removeItem('token');
-    }
+    };
 
     self.saveToken = function (token) {
         storageService.setItem('token',token);
@@ -33,7 +33,7 @@
 
     self.getToken = function () {
         return storageService.getItem('token');
-    }
+    };
 }
 
 app.service('authService', authService);

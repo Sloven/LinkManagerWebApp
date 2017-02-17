@@ -1,15 +1,19 @@
 var storageFake = require('../fakes/storageFake');
+var backendMock = require('../fakes/backend');
+var constFake = require('../fakes/CONSTFake');
+
 
 describe('DEMOMODE-SERVICE', function() {
     beforeEach(angular.mock.module('LinkManager',function($provide) {
         $provide.service('storageService', storageFake);
     }));
 
-    var dm;
+    var dm,$httpBackend, userService;
 
-    beforeEach(inject(function (_demoModeService_) {
+    beforeEach(angular.mock.inject(function (_$httpBackend_,_demoModeService_, _userService_) {
         dm =_demoModeService_;
-        //ss.storage = {};
+        $httpBackend = _$httpBackend_;
+        userService = _userService_;
     }));
 
     it('should demoModeService be defined', function(){
@@ -25,13 +29,6 @@ describe('DEMOMODE-SERVICE', function() {
         var key = dm.enable();
         expect(dm.getDemoKey()).toBe(key);
         dm.disable();
-    });
-
-    it('should overwrite DEMOKEY', function(){
-        var key1 = dm.enable();
-        var key2 = dm.enable();
-        var key3 = dm.enable();
-        expect(dm.getDemoKey()).toBe(key3);
     });
 
     it('series should not throw', function(){
@@ -51,5 +48,25 @@ describe('DEMOMODE-SERVICE', function() {
         };
             
         expect(testFunc).not.toThrow();
+    });
+
+    describe('register-login-add', function () {
+        beforeEach(function(){
+            backendMock.register($httpBackend, constFake);
+
+            $httpBackend.expectGET('index.html').respond(200, '');
+            $httpBackend.expectGET('app/appView.html').respond(200, '');
+            $httpBackend.whenGET('app/home/home.html').respond(200, '');
+        });
+
+        it('should register demouser', function () {
+            spyOn(userService, 'loginDemoUser').and.returnValue(true);
+
+            var dkey = dm.enable();
+            dm.registerLoginDemoUser(dkey);
+            $httpBackend.flush();
+            
+            expect(userService.loginDemoUser).toHaveBeenCalledWith(dkey);
+        });        
     });
 });

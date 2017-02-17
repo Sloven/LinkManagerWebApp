@@ -1,9 +1,9 @@
-﻿function interceptor($location, $injector, authService,demoModeService) {
+﻿function interceptor($location, $injector, authService) {
     return {
         request: function (config) {
             var token = authService.getToken();
-            if (config.url.indexOf("api") > 0 && token) {
-                config.headers.Authorization = "Bearer " + token;
+            if (config.url.indexOf('api') > 0 && token) {
+                config.headers.Authorization = 'Bearer ' + token;
             }
 
             //show loading bar
@@ -42,7 +42,7 @@
             //hideWait($mdDialog);
             return res;
         }
-    }
+    };
 }
 
 

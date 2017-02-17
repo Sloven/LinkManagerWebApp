@@ -2,36 +2,40 @@ function demoController($stateParams, lookupService, linkService, authService, u
     var self = this;
     self.resourceList = null;
     self.key = null;
-    
+
     self.tryResource = $stateParams.tryResource;
 
-    self.enableDemoMode = function () {
-        if (!demoModeService.isDemoMode())
-            self.key = demoModeService.enable();
+    self.demoChained = function(resourceUrl){
+        self.key = demoModeService.enable();
+        demoModeService.registerLoginDemoUser(self.key);
+        self.addURL(resourceUrl);
     };
 
+    // self.enableDemoMode = function () {
+    //     if (!demoModeService.isDemoMode())
+    //         self.key = demoModeService.enable();
+    // };
 
-    self.registerDemoUser = function () {
-        //var key = demoModeService.getDemoKey();
-        if (!authService.isAuthed() && self.key) {
-            userService.registerDemoUser(self.key)
-                .then(function () {
-                    self.loginDemoUser(self.key);
-                }, function (res) {
-                    console.error(res);
-                });
-        }
-    };
+    // self.registerDemoUser = function () {
+    //     if (!authService.isAuthed() && self.key) {
+    //         userService.registerDemoUser(self.key)
+    //             .then(function () {
+    //                 self.loginDemoUser(self.key);
+    //             }, function (res) {
+    //                 console.error(res);
+    //             });
+    //     }
+    // };
 
-    self.loginDemoUser = function (key) {
-        if (!authService.isAuthed()) {
-            userService.loginDemoUser(key);
-        }
-    };
+    // self.loginDemoUser = function (key) {
+    //     if (!authService.isAuthed()) {
+    //         userService.loginDemoUser(key);
+    //     }
+    // };
 
     self.addURL = function (newURL) {
         linkService.addURL(newURL).then(function (response) {
-            self.links = linkService.getAllLinks();
+            self.resourceList = linkService.getAllLinks();
         });
     };
 
@@ -42,6 +46,6 @@ function demoController($stateParams, lookupService, linkService, authService, u
     };
 
     self.getLinks();
-}
 
+}
 app.controller('demoController', demoController);

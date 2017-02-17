@@ -47,6 +47,11 @@ describe('DEMO:', function () {
     });
 
     describe('First time visit', function () {
+        beforeEach(function(){
+            backendMock.register($httpBackend, constFake);
+            backendMock.loginOK($httpBackend, constFake);
+        });
+
         it('DEMOKEY variable should be set', function () {
             //var url = '/demo';
             dmc.enableDemoMode();
@@ -57,24 +62,16 @@ describe('DEMO:', function () {
         });
 
         it('should register demouser', function () {
-            backendMock.register($httpBackend, constFake);
-            backendMock.loginOK($httpBackend, constFake);
+            spyOn(dmc, 'loginDemoUser').and.returnValue(true);
 
             dmc.enableDemoMode();
             dmc.registerDemoUser();
             $httpBackend.flush();
-            // $httpBackend.expectPOST(CONST.api_token, {}, function(headers) {
-            //     return {
-            //         'DEMOMODE': 'true'
-            //     };
-            // }).respond(200);
-            // $httpBackend.flush();
+            
+            expect(dmc.loginDemoUser).toHaveBeenCalledWith(dmc.key);
         });
 
         it('should sign in demouser', function(){
-            backendMock.register($httpBackend, constFake);
-            backendMock.loginOK($httpBackend, constFake);
-
             dmc.enableDemoMode();
             dmc.registerDemoUser();
             dmc.loginDemoUser();
@@ -84,12 +81,9 @@ describe('DEMO:', function () {
         });
 
         it('should add demo resource', function(){
-            backendMock.register($httpBackend, constFake);
-            backendMock.loginOK($httpBackend, constFake);
-
             var data = 'http://someresourceurl.com/testmeplease';
             dmc.tryResource = data;
-            dmc.startDemoMode();
+            dmc.addDemoResource();
             // dmc.enableDemoMode();
             // dmc.registerDemoUser();
             // dmc.loginDemoUser();
@@ -97,6 +91,13 @@ describe('DEMO:', function () {
 
             expect(dmc.resourceList).toBeTruthy();
             expect(dmc.resourceList.length > 0).toBe(true);
+        });
+
+        it('test chained actions all together',function(){
+            var data = 'http://anothersometestresourceurl.com/testmeplease';
+            dmc.tryResource = data;
+
+             
         });
         
     });
