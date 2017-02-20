@@ -11,41 +11,19 @@ function demoController($stateParams, lookupService, linkService, authService, u
         self.addURL(resourceUrl);
     };
 
-    // self.enableDemoMode = function () {
-    //     if (!demoModeService.isDemoMode())
-    //         self.key = demoModeService.enable();
-    // };
-
-    // self.registerDemoUser = function () {
-    //     if (!authService.isAuthed() && self.key) {
-    //         userService.registerDemoUser(self.key)
-    //             .then(function () {
-    //                 self.loginDemoUser(self.key);
-    //             }, function (res) {
-    //                 console.error(res);
-    //             });
-    //     }
-    // };
-
-    // self.loginDemoUser = function (key) {
-    //     if (!authService.isAuthed()) {
-    //         userService.loginDemoUser(key);
-    //     }
-    // };
-
     self.addURL = function (newURL) {
-        linkService.addURL(newURL).then(function (response) {
-            self.resourceList = linkService.getAllLinks();
-        });
+        if(newURL != null){
+            linkService.addURL(newURL).then(function () {
+                //self.resourceList = linkService.getAllLinks();
+                self.getLinks();
+            });
+        }
     };
 
     self.getLinks = function () {
         lookupService.getLinks(function (getLinksResult) {
-            self.links = getLinksResult;
+            self.resourceList = getLinksResult;
         });
     };
-
-    self.getLinks();
-
 }
 app.controller('demoController', demoController);

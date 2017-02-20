@@ -2,15 +2,18 @@
     var self = this;
 
     self.post = function (url, data, config) {
-        return $http.post(CONST.api_base + url,
+        var normalisedUrl = CONST.api_base + url.toLowerCase();
+
+        return $http.post(normalisedUrl,
             JSON.stringify(data),
             config
         );
-    }
+    };
 
     self.get = function(url, data) {
-        return $http.get(CONST.api_base + url,data);
-    }
-};
+        var normalisedUrl = CONST.api_base + url.toLowerCase();
+        return $http.get(normalisedUrl, data);
+    };
+}
 
-app.service("APIService", APIService);
+app.service('APIService', APIService);

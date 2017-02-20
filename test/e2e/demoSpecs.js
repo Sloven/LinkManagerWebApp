@@ -1,6 +1,6 @@
 var storageFake = require('../fakes/storageFake');
 var constFake = require('../fakes/CONSTFake');
-var backendMock = require('../fakes/backend');
+var backendMockExport = require('../fakes/backend');
 
 var derr = require('../../sources/app/demo/democontroller');
 var ussr = require('../../sources/app/services/userService');
@@ -34,7 +34,6 @@ describe('DEMO:', function () {
     });
 
     beforeEach(function () {
-        backendMock.general($httpBackend, constFake);
         
         $httpBackend.expectGET('index.html').respond(200, '');
         $httpBackend.expectGET('app/appView.html').respond(200, '');
@@ -48,84 +47,25 @@ describe('DEMO:', function () {
 
     describe('First time visit', function () {
         beforeEach(function(){
-            backendMock.register($httpBackend, constFake);
-            backendMock.loginOK($httpBackend, constFake);
-        });
-
-        it('DEMOKEY variable should be set', function () {
-            //var url = '/demo';
-            dmc.enableDemoMode();
-            //$httpBackend.whenGET(url).respond(200, '');
-            //$httpBackend.flush();
-            //var mode = demoModeService.currentMode();
-            expect(dmc.key).toBeTruthy();
-        });
-
-        it('should register demouser', function () {
-            spyOn(dmc, 'loginDemoUser').and.returnValue(true);
-
-            dmc.enableDemoMode();
-            dmc.registerDemoUser();
-            $httpBackend.flush();
-            
-            expect(dmc.loginDemoUser).toHaveBeenCalledWith(dmc.key);
-        });
-
-        it('should sign in demouser', function(){
-            dmc.enableDemoMode();
-            dmc.registerDemoUser();
-            dmc.loginDemoUser();
-            $httpBackend.flush();
-
-            expect(authService.isAuthed()).toBe(true);
-        });
-
-        it('should add demo resource', function(){
-            var data = 'http://someresourceurl.com/testmeplease';
-            dmc.tryResource = data;
-            dmc.addDemoResource();
-            // dmc.enableDemoMode();
-            // dmc.registerDemoUser();
-            // dmc.loginDemoUser();
-            // $httpBackend.flush();
-
-            expect(dmc.resourceList).toBeTruthy();
-            expect(dmc.resourceList.length > 0).toBe(true);
+            var backendMock = new backendMockExport($httpBackend, constFake);
+            backendMock.general();
+            backendMock.register();
+            backendMock.loginOK();
+            backendMock.linksPOST();
+            backendMock.linksGET();
         });
 
         it('test chained actions all together',function(){
             var data = 'http://anothersometestresourceurl.com/testmeplease';
-            dmc.tryResource = data;
+            //dmc.tryResource = data;
+            dmc.demoChained(data);
 
-             
+            $httpBackend.flush();
+            
+            expect(dmc.resourceList).toBeTruthy();
+            expect(dmc.resourceList.objCollecton.length > 0).toBe(true);
+
         });
         
     });
-
-    /*
-    
-        describe('Another time visit', function(){
-            describe('DEMOMODE is valid',function(){
-                it('should reuse DEMOMODE variable and token', function(){
-                    expect(demoModeService.currentMode()).toBe('DEMOMODE');
-                    expect(authService.isAuthed).toBe(true);
-                });
-            });
-    
-            describe('DEMOMODE is invalid',function(){
-                it('should recreate DEMOMODE variable and token', function(){
-                    expect(authService.isAuthed).toBe(true);
-                    expect(authService.isAuthed).toBe(true);
-                });
-            });
-        });
-    
-        describe('Add new resource', function(){
-            it('should be added and list of resources shown',function(){
-                var list = [];
-                expect(list.count).toBeDefined();
-                expect(list.count > 0).toBe(true);
-            });
-        });
-        */
 });

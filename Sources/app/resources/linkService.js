@@ -2,17 +2,20 @@ function linkService(APIService) {
     var self = this;
 
     self.addLink = function () {
-        APIService.post('/Links', self.link.URL).then(function (resp) {
+        APIService.post('/links', self.link.URL).then(function (resp) {
             console.log(resp);
         });
     };
 
     self.addURL = function (newURL) {
-        return APIService.post('/Links', newURL);
+        return APIService.post('/links', newURL);
     };
 
     self.getAllLinks = function () {
-        return APIService.get('/links');
+        APIService.get('/links')
+        .then(function(result){
+            return result;
+        });
     };
 
     self.getAllPublicLinks = function (userName) {

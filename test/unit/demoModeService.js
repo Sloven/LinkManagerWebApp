@@ -1,5 +1,5 @@
 var storageFake = require('../fakes/storageFake');
-var backendMock = require('../fakes/backend');
+var backendMockExport = require('../fakes/backend');
 var constFake = require('../fakes/CONSTFake');
 
 
@@ -52,7 +52,8 @@ describe('DEMOMODE-SERVICE', function() {
 
     describe('register-login-add', function () {
         beforeEach(function(){
-            backendMock.register($httpBackend, constFake);
+            var backendMock = new backendMockExport($httpBackend, constFake);
+            backendMock.register();
 
             $httpBackend.expectGET('index.html').respond(200, '');
             $httpBackend.expectGET('app/appView.html').respond(200, '');

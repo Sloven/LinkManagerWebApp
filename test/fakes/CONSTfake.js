@@ -6,10 +6,12 @@
     notAuthenticated: 'auth-not-authenticated',
     notAuthorized: 'auth-not-authorized',
 
-    api_base: 'http://localhost/linkManager/api',
+//lowercase only
+    api_base: 'http://localhost/linkmanager/api',
 
     api_auth: 'api/authenticate',
-    api_token: 'http://localhost/linkManager/oauth/token',
+//lowercase only
+    api_token: 'http://localhost/linkmanager/oauth/token',
 
     demoUserPrefix: 'userForDemo#',
 
