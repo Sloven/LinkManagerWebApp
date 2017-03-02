@@ -8,7 +8,7 @@ var intrc = require('../../sources/app/services/interceptor');
 var auth = require('../../sources/app/services/authService');
 //test
 
-describe('DEMO:', function () {
+describe('DEMO.specs:', function () {
 
     var $state, $httpBackend, $http, $stateParams, dmc, interceptor, authService, storage, demoModeService;
 
@@ -48,11 +48,10 @@ describe('DEMO:', function () {
     describe('First time visit', function () {
         beforeEach(function(){
             var backendMock = new backendMockExport($httpBackend, constFake);
-            backendMock.general();
             backendMock.register();
             backendMock.loginOK();
-            backendMock.linksPOST();
-            backendMock.linksGET();
+            backendMock.resGET();
+            backendMock.resPOST();
         });
 
         it('test chained actions all together',function(){
@@ -63,7 +62,7 @@ describe('DEMO:', function () {
             $httpBackend.flush();
             
             expect(dmc.resourceList).toBeTruthy();
-            expect(dmc.resourceList.objCollecton.length > 0).toBe(true);
+            expect(dmc.resourceList.mockedResourcesFromServer.length > 0).toBe(true);
 
         });
         

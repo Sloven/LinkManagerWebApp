@@ -6,7 +6,7 @@ function lookupController($stateParams, linkService, lookupService) {
         linkService.addURL(newURL).then(function(response) {
             linkService.getAllLinks();
         });
-    }
+    };
 
     
     if ($stateParams && $stateParams.linkToAdd)

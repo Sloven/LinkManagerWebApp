@@ -11,5 +11,5 @@
     api_auth: 'api/authenticate',
     api_token: 'http://localhost/linkmanager/oauth/token',
 
-    demoUserPrefix: 'userForDemo#'
+    demoUserPrefix: 'userForDemo0#'
 });

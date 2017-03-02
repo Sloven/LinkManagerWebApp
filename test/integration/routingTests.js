@@ -1,5 +1,4 @@
-﻿/// <reference path='../Scripts/_references.js'/>
-describe('Routing.', function () {
+﻿describe('Routing.', function () {
 
     var $state;
 

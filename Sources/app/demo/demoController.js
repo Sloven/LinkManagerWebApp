@@ -1,20 +1,22 @@
-function demoController($stateParams, lookupService, linkService, authService, userService, demoModeService) {
+'use strict';
+function demoController($q, $stateParams, lookupService, linkService, authService, userService, demoModeService) {
     var self = this;
     self.resourceList = null;
     self.key = null;
 
-    self.tryResource = $stateParams.tryResource;
+    //self.tryResource = $stateParams.tryResource;
 
     self.demoChained = function(resourceUrl){
         self.key = demoModeService.enable();
-        demoModeService.registerLoginDemoUser(self.key);
-        self.addURL(resourceUrl);
+        
+        demoModeService.registerLoginDemoUser(self.key, function(){
+            self.addURL(resourceUrl);
+        });
     };
 
     self.addURL = function (newURL) {
-        if(newURL != null){
+        if(newURL != null && newURL.length > 0){
             linkService.addURL(newURL).then(function () {
-                //self.resourceList = linkService.getAllLinks();
                 self.getLinks();
             });
         }
@@ -25,5 +27,12 @@ function demoController($stateParams, lookupService, linkService, authService, u
             self.resourceList = getLinksResult;
         });
     };
+
+    self.demoChained($stateParams.tryResource);
+
+    self.getLinks();
 }
 app.controller('demoController', demoController);
+
+
+////twetwetwetwetwet

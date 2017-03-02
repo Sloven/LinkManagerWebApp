@@ -1,35 +1,26 @@
 ﻿<!-- Container #1 (see wireframe) -->
-<div ng-controller="appController as app">
-    <md-toolbar layout="row" class="md-toolbar-tools">
+<md-content ng-controller="appController as app" layout='column' layout-fill>
+        <md-toolbar layout="row" class="md-toolbar-tools">
 
-        <md-button ng-click="toggleSidenav('left')" hide-gt-md class="md-icon-button" aria-label="Settings" ng-show="app.isAuthed">
-            <ng-md-icon icon="menu"></ng-md-icon>
-        </md-button>
-        <h2>
-            <span>Link Manager</span>
-        </h2>
+                    <md-button ng-click="toggleSidenav('left')" hide-gt-md class="md-icon-button" aria-label="Settings" ng-show="app.isAuthed">
+                        <ng-md-icon icon="menu"></ng-md-icon>
+                    </md-button>
+                    <h2>
+                        <span>Link Manager</span>
+                    </h2>
 
-        <md-button ng-href="/explore">Explore</md-button>
+                    <md-button ng-href="/explore">Explore</md-button>
 
-        <span flex></span>
-        <md-button ng-show="!app.isAuthed" ui-sref="main.login">login</md-button>
-        <md-button ng-show="!app.isAuthed" class="md-raised" ui-sref="main.register">sign up</md-button>
+                    <span flex></span>
+                    <md-button ng-show="!app.isAuthed" ui-sref="main.login">login</md-button>
+                    <md-button ng-show="!app.isAuthed" class="md-raised" ui-sref="main.register">sign up</md-button>
 
 
-    </md-toolbar>
+        </md-toolbar>
 
-    <!-- Container #2 -->
-    <div flex layout="row">
-
-        <!-- Container #3 -->
-        <tag-side-nav ng-show="app.isAuthed"></tag-side-nav>
-
-        <!-- Container #4 -->
-        <md-content flex id="content">
-
-            <div ui-view></div>
-
+        <md-content id="content" layout='column'>
+              <div ui-view></div>
         </md-content>
 
-    </div>
-</div>
+        <div>footer</div>
+</md-content>

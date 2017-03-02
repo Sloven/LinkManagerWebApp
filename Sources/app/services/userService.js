@@ -56,7 +56,7 @@
     };
 
     self.loginDemoUser = function (guestKey) {
-        self.login(guestKey, guestKey);
+        return self.login(guestKey, guestKey);
     };
 }
 

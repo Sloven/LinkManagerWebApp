@@ -6,17 +6,17 @@
     
     self.init = function (linkId) {
         //self.getLink(linkId);
-    }
+    };
 
     self.addLink = function () {
-        APIService.post("/Links", self.link.URL).then(function (resp) {
+        APIService.post('/Links', self.link.URL).then(function (resp) {
       
             console.log(resp);
         });
     };
 
     self.addURL = function (newURL) {
-        APIService.post("/Links", newURL).then(function (resp) {
+        APIService.post('/Links', newURL).then(function (resp) {
         });
     };
 
@@ -24,10 +24,10 @@
         //get link from server
         self.link = {
             Id:linkId,
-            URL: "http//www.someurl",
-            title: "sometitle",
-            createdDate:"15/09/2016"
-        }
+            URL: 'http//www.someurl',
+            title: 'sometitle',
+            createdDate:'15/09/2016'
+        };
     };
 
 }

@@ -1,11 +1,13 @@
-﻿<div ng-controller="demoController as demo">
-    <md-list flex>
-        <div layout="row" layout-align="center center">
-            <md-input-container flex>
+﻿<div ng-controller="demoController as demo" layout='column'>
+    <div layout="row" layout-align="center center">
+            <md-input-container flex class='linkInput'>
                 <input ng-model="demo.searchOrAdd" type="text" placeholder="Search. To create new Link press Add button"/>
             </md-input-container>
             <md-button flex="10" type="text" style="text-align: center" ng-click="demo.addURL(demo.searchOrAdd)">Add link</md-button>
-        </div>
+    </div>
+
+    <md-list flex>
+        
         <md-list-item ng-repeat="link in demo.links" ng-click="link.isExpanded = !link.isExpanded">
             repeatMe
             <div layout="column" flex>
@@ -25,4 +27,4 @@
             </div>
         </md-list-item>
     </md-list>
-</div>tester
+</div>

@@ -50,7 +50,7 @@ describe('DEMOMODE-SERVICE', function() {
         expect(testFunc).not.toThrow();
     });
 
-    describe('register-login-add', function () {
+    xdescribe('register-login-add', function () {
         beforeEach(function(){
             var backendMock = new backendMockExport($httpBackend, constFake);
             backendMock.register();

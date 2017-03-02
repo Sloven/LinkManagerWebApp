@@ -2,6 +2,7 @@
 var plugins = require('gulp-load-plugins')();
 var config = require('./gulp_tasks/gulpConfig')();
 var karma = require('karma');
+var cp = require('child_process');
 
 plugins.karma = karma;
 
@@ -19,12 +20,26 @@ gulp.task('testworkspaceRun',
     plugins.shell.task('code test/')
 );
 
+gulp.task('reset', function() {
+    return cp.execFile('echo testtesttest.');
+});
+
+gulp.task('terminal',['reset']);
+
 //deploy task
 gulp.task('deploy',['applyWebConfig','composeLibs','composeCSS', 'composeSources','copyStaticFilesFolders','watch']);
 
 //watch then deploy task
 gulp.task('watch',function(){
-     gulp.watch(config.path.sources + '**/*', ['deploy'])
+    gulp.watch(config.path.sources + '**/*', ['applyWebConfig','composeSources','copyStaticFilesFolders']);
 });
 
+
+
+
+
 gulp.task('test',['testworkspaceRun']);
+
+//gulp.task('default', ['deploy']);
+
+

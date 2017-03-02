@@ -1,3 +1,19 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.obeyLink{
+  height:450px;
+}
+
+.linkInput{
+  max-width:450px; 
+}
+
 .loginBox {
   max-width:  90%;
   width: 500px
@@ -29,13 +45,7 @@ ng-md-icon.navMenu {
   display: none;
 }
 
-html, body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-}
+
 
 /* Toolbar area */
 
@@ -72,12 +82,6 @@ md-sidenav md-list {
 
 #content {
   overflow: hidden;
-}
-
-#content {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 5px;
 }
 
 #content .md-button.share {

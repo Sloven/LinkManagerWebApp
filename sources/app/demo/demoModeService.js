@@ -1,4 +1,4 @@
-function demoModeService(storageService, authService,userService, CONST) {
+function demoModeService($q, storageService, authService,userService, CONST) {
     var self = this;
 
     // self.defineModeFromPath = function(path) {
@@ -27,16 +27,30 @@ function demoModeService(storageService, authService,userService, CONST) {
         return storageService.getItem('DEMOKEY') != null;
     };
 
-    
+    // self.registerLoginDemoUser = function(key){
+    //     if (!authService.isAuthed() && key) {
+    //         userService.registerDemoUser(key)
+    //                 .then(function () {
+    //                     return userService.loginDemoUser(key);
+    //                 }, function (res) {
+    //                     console.error(res);
+    //                 });
+    //     }
+    // };
 
-    self.registerLoginDemoUser = function (key) {
+    self.registerLoginDemoUser = function(key, resolve){
         if (!authService.isAuthed() && key) {
-            userService.registerDemoUser(key)
-                .then(function () {
-                    userService.loginDemoUser(key);
-                }, function (res) {
-                    console.error(res);
+            return userService.registerDemoUser(key)
+                .then(function(){
+                    return userService.loginDemoUser(key)
+                        .then(resolve);
                 });
+        }
+    };
+
+    self.registerDemoUser = function(key){
+        if (!authService.isAuthed() && key) {
+            userService.registerDemoUser(key);
         }
     };
 

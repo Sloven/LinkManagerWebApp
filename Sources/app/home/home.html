@@ -1,8 +1,13 @@
-﻿<div ng-controller="homeController as home">
-        <div layout="row" layout-align="center center">
-            <md-input-container flex>
+﻿<div ng-controller="homeController as home" layout='column'>
+    <div layout='row' class='obeyLink' layout-align='center center' >
+            <md-input-container flex class='linkInput'>
                 <input ng-model="home.obeyLink" type="text" placeholder="Add link to try" />
             </md-input-container>
-            <md-button flex="10" type="text" style="text-align:center" ui-sref="main.app.demo({ tryResource: home.obeyLink })">OBEY</md-button>
-        </div>
+
+            <md-button type="text" style="text-align:center" ui-sref="main.app.demo({ tryResource: home.obeyLink })">OBEY</md-button>
+    </div>
+    <div layout='column' layout-align="center center">
+        <h4>Laborum minim ullamco sunt eu tempor labore duis consectetur adipisicing.</h4>
+        <p>Consequat tempor incididunt anim est veniam voluptate in dolor aliquip amet officia nisi. Sit deserunt ut nulla commodo aliquip esse officia aute elit dolore commodo qui laborum. Commodo occaecat esse id magna reprehenderit labore qui sint officia ullamco magna non. Labore in id sit qui reprehenderit do sint velit tempor aute tempor voluptate nulla. Magna aliquip sunt nisi minim eu. Magna dolor adipisicing dolor occaecat excepteur magna eiusmod commodo consequat velit sunt. Culpa elit occaecat anim sunt eu eiusmod anim nulla enim ut Lorem. In do excepteur est tempor ut laboris exercitation amet Lorem reprehenderit esse ut dolore sit. Occaecat consectetur aliqua quis commodo incididunt deserunt excepteur. Culpa adipisicing labore eiusmod ea incididunt mollit est aliquip nostrud. Cupidatat excepteur laboris eiusmod pariatur et reprehenderit ad non sit tempor occaecat reprehenderit. Dolore non velit anim ea elit deserunt ad Lorem nulla occaecat.</p>
+    <div>
 </div>

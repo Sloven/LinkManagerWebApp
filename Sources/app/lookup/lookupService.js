@@ -1,14 +1,10 @@
-﻿function lookupService($stateParams, linkService, authService) {
+﻿function lookupService($stateParams, linkService, authService,APIService) {
     var self = this;
     self.collectedLinks = null;
 
     self.getLinks = function (callBack) {
-        if (authService.isAuthed())
-            linkService.getAllLinks().then(function (response) {
-                callBack(response.data);
-            });
-        else {
-            linkService.getAllPublicLinks($stateParams.userName).then(function (response) {
+        if (authService.isAuthed()){
+            APIService.get('/resources').then(function (response) {
                 callBack(response.data);
             });
         }
