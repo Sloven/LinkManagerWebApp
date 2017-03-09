@@ -11,6 +11,10 @@ function resourcesService(APIService) {
     self.getAllPublicResources = function (userName) {
         return APIService.get('/resources/public', userName);
     };
+
+    self.addNew = function(url){
+        return APIService.post('/resources', url);
+    };
 }
 
-app.service('linkService', resourcesService);
+app.service('resourcesService', resourcesService);

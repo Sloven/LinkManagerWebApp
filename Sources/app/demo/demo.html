@@ -7,16 +7,15 @@
     </div>
 
     <md-list flex>
-        
-        <md-list-item ng-repeat="link in demo.links" ng-click="link.isExpanded = !link.isExpanded">
+        <md-list-item id='lst_storedResources' ng-repeat="rsc in demo.resourceList" ng-click="rsc.isExpanded = !rsc.isExpanded">
             repeatMe
-            <div layout="column" flex>
+            <div id='lstitm_resource' layout="column" flex>
                 <div layout="row">
-                    <div flex="25">{{link.URL}}</div>
-                    <div flex>{{link.Title}}</div>
-                    <div flex="25">{{link.CreatedAt}}</div>
+                    <div flex="25">{{rsc.URL}}</div>
+                    <div flex>{{rsc.Title}}</div>
+                    <div flex="25">{{rsc.CreatedAt}}</div>
                 </div>
-                <div layout="row" class="md-list-item-text compact" ng-show="link.isExpanded">
+                <div layout="row" class="md-list-item-text compact" ng-show="rsc.isExpanded">
                     <div layout="column" flex>
                         <div> Show or hide me</div>
                         <md-button> Show or hide me</md-button>

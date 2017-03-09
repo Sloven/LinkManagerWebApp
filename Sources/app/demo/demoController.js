@@ -1,5 +1,5 @@
 'use strict';
-function demoController($q, $stateParams, lookupService, linkService, authService, userService, demoModeService) {
+function demoController($q, $stateParams, lookupService, resourcesService, authService, userService, demoModeService) {
     var self = this;
     self.resourceList = null;
     self.key = null;
@@ -16,7 +16,7 @@ function demoController($q, $stateParams, lookupService, linkService, authServic
 
     self.addURL = function (newURL) {
         if(newURL != null && newURL.length > 0){
-            linkService.addURL(newURL).then(function () {
+            resourcesService.addNew(newURL).then(function () {
                 self.getLinks();
             });
         }

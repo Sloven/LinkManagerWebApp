@@ -1,33 +1,19 @@
-﻿function userService($http, CONST, authService) {
+﻿function userService($http, CONST, authService, APIService) {
     var self = this;
-    self.getQuote = function() {
-        return $http.get(CONST.api_base + '/account/quote');
+
+    self.register = function (username, email, password, confirmPassword) {
+        return APIService.post(
+                '/account/register'
+                ,{
+                    username: username,
+                    email: email,
+                    password: password,
+                    confirmPassword: confirmPassword
+                });
     };
 
-    self.register = function (username, email, password, confirmPassword, apiUrl) {
-        if (!apiUrl)
-            apiUrl = CONST.api_base;
-
-        return $http.post(apiUrl + '/account/register',
-            {
-                username: username,
-                email: email,
-                password: password,
-                confirmPassword: confirmPassword
-            });
-    };
-
-    self.login = function (username, password, apiTokenUrl) {
-        if (!apiTokenUrl)
-            apiTokenUrl = CONST.api_token;
-
-        return $http.post(apiTokenUrl,
-            'userName=' +
-            encodeURIComponent(username) +
-            '&password=' +
-            encodeURIComponent(password) +
-            '&grant_type=password'
-        );
+    self.login = function (username, password) {
+        return APIService.tokenPOST(username,password);
     };
 
     self.logout = function() {

@@ -50,7 +50,8 @@ describe('DEMO.specs:', function () {
             var backendMock = new backendMockExport($httpBackend, constFake);
             backendMock.register();
             backendMock.loginOK();
-            backendMock.resGET();
+            backendMock.resourcesGET();
+            backendMock.publicResourcesGET();
             backendMock.resPOST();
         });
 
