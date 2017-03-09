@@ -27,16 +27,12 @@ gulp.task('reset', function() {
 gulp.task('terminal',['reset']);
 
 //deploy task
-gulp.task('deploy',['applyWebConfig','composeLibs','composeCSS', 'composeSources','copyStaticFilesFolders','watch']);
+gulp.task('build',['applyWebConfig','composeLibs','composeCSS', 'composeSources','copyStaticFilesFolders','watch']);
 
 //watch then deploy task
 gulp.task('watch',function(){
     gulp.watch(config.path.sources + '**/*', ['applyWebConfig','composeSources','copyStaticFilesFolders']);
 });
-
-
-
-
 
 gulp.task('test',['testworkspaceRun']);
 

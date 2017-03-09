@@ -1,4 +1,0 @@
-
-module.exports = function karmaPowershell(gulp,plugins,gulpConfig){
-    return plugins.shell.task('powershell -Command "./test/karma/phantom-watch.ps1"');
-}

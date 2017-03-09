@@ -2,8 +2,6 @@ var storageFake = require('../fakes/storageFake');
 var backendFake = require('../fakes/backend');
 var constFake = require('../fakes/CONSTFake');
 
-var intr = require('../../wwwroot/all');
-
 describe('API-SERVICE', function() {
     beforeEach(angular.mock.module('LinkManager',function($provide) {
         $provide.service('storageService', storageFake);
@@ -28,7 +26,7 @@ describe('API-SERVICE', function() {
         api.post(someAPIurl, newResourceUrl);
 
         $httpBackend.expectPOST(constFake.api_base+someAPIurl)
-            .respond(function(method, url, data, headers, params){
+            .respond(function(method, url, data){
                 expect(data).toEqual('"'+newResourceUrl+'"');
                 return {};
             });
@@ -44,7 +42,7 @@ describe('API-SERVICE', function() {
         api.post(someAPIurl, newResourceUrl);
 
         $httpBackend.expectPOST(constFake.api_base+someAPIurl)
-            .respond(function(method, url, data, headers, params){
+            .respond(function(method, url, data, headers){
                 expect(headers.Demokey).toBeDefined();
                 expect(headers.Demokey).toBeTruthy();
                 return {};
@@ -59,7 +57,7 @@ describe('API-SERVICE', function() {
         api.get(someAPIurl, newResourceUrl);
 
         $httpBackend.expectGET(constFake.api_base+someAPIurl)
-            .respond(function(method, url, data, headers, params){
+            .respond(function(method, url){
                 expect(url).toEqual(constFake.api_base+someAPIurl);
                 return {};
             });
@@ -73,7 +71,7 @@ describe('API-SERVICE', function() {
         api.get(someAPIurl);
 
         $httpBackend.expectGET(constFake.api_base+someAPIurl)
-            .respond(function(method, url, data, headers, params){
+            .respond(function(method, url, data, headers){
                 expect(headers.Demokey).toBeDefined();
                 expect(headers.Demokey).toBeTruthy();
                 expect(url).toEqual(constFake.api_base+someAPIurl);

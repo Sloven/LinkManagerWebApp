@@ -31,4 +31,4 @@ gulp.task('protractor', ['webdriver-start'], function(){
 });
 
 gulp.task('phantom-test',['phantom']);
-gulp.task('chrom-test',['chrome']);
+gulp.task('chrome-test',['chrome']);
