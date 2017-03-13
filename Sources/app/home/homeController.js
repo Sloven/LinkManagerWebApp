@@ -1,13 +1,28 @@
 ﻿'use strict';
-function homeController() {
+function homeController($state, demoModeService, userService) {
     var self = this;
 
-    var value = null;
     self.obeyLink = '';
+    self.Demokey = null;
 
-    self.changeValue = function(){
-        self.value = true;
+    self.obey = function(obeyLink){
+        self.Demokey = demoModeService.enable();
+        demoModeService.registerLoginDemoUser(self.Demokey, function(){
+            //redirect to dashboard
+            $state.go('main.app.dashboard.addLink'
+            ,{  linkToAdd:obeyLink,
+                userName:userService.userName()
+            });
+        });
     };
+
+    self.homeEnter = function (){
+        if(userService.isAuthed())
+            $state.go('main.app.dashboard', {userName:userService.userName()});
+    };
+
+    self.homeEnter();
+
 }
 
 app.controller('homeController', homeController);

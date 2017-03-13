@@ -6,7 +6,7 @@
 
     self.logout = function() {
         authService.logout && authService.logout();
-        $location.path("/login");
+        $state.go('main.app.home');
         updateUser();
     };
 

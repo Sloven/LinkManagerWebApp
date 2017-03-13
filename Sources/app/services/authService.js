@@ -1,4 +1,4 @@
-﻿function authService($window, storageService) {
+﻿function authService($window, storageService, CONST) {
     var self = this;
     
     self.parseJwt = function (token) {
@@ -25,6 +25,7 @@
     };
     self.logout = function () {
         storageService.removeItem('token');
+        storageService.removeItem(CONST.DEMOKEY);
     };
 
     self.saveToken = function (token) {

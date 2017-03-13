@@ -4,7 +4,8 @@
                 <input id='inp_obey' ng-model="home.obeyLink" type="text" placeholder="Add link to try" />
             </md-input-container>
 
-            <md-button id='btn_obey' type="text" style="text-align:center" ui-sref="main.app.demo({ tryResource: home.obeyLink })">OBEY</md-button>
+            <!--<md-button id='btn_obey' type="text" style="text-align:center" ui-sref="main.app.demo({ tryResource: home.obeyLink })">OBEY</md-button>-->
+            <md-button id='btn_obey' type="text" style="text-align:center" ng-click="home.obey(home.obeyLink)">OBEY</md-button>
     </div>
     <div layout='column' layout-align="center center">
         <h4>Laborum minim ullamco sunt eu tempor labore duis consectetur adipisicing.</h4>

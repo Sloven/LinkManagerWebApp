@@ -1,14 +1,13 @@
-﻿<div ng-controller="demoController as demo" layout='column'>
+<div ng-controller="customerController as cust" layout='column'>
     <div layout="row" layout-align="center center">
             <md-input-container flex class='linkInput'>
-                <input ng-model="demo.searchOrAdd" type="text" placeholder="Search. To create new Link press Add button"/>
+                <input ng-model="cust.searchOrAdd" type="text" placeholder="Search. To create new Link press Add button"/>
             </md-input-container>
-            <md-button flex="10" type="text" style="text-align: center" ng-click="demo.addURL(demo.searchOrAdd)">Add link</md-button>
+            <md-button flex="10" type="text" style="text-align: center" ng-click="cust.addURL(cust.searchOrAdd)">Add link</md-button>
     </div>
 
     <md-list flex>
-        <md-list-item id='lst_storedResources' ng-repeat="rsc in demo.resourceList" ng-click="rsc.isExpanded = !rsc.isExpanded">
-            repeatMe
+        <md-list-item id='lst_storedResources' ng-repeat="rsc in cust.resourceList" ng-click="rsc.isExpanded = !rsc.isExpanded">
             <div id='lstitm_resource' layout="column" flex>
                 <div layout="row">
                     <div flex="25">{{rsc.URL}}</div>

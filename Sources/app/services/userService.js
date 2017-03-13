@@ -44,6 +44,10 @@
     self.loginDemoUser = function (guestKey) {
         return self.login(guestKey, guestKey);
     };
+
+    self.isAuthed = function()    {
+        return authService.isAuthed();
+    };
 }
 
 app.service('userService', userService);

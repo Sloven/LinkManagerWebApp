@@ -1,11 +1,6 @@
 function demoModeService($q, storageService, authService,userService, CONST) {
     var self = this;
 
-    // self.defineModeFromPath = function(path) {
-    //     if(path && path.length > 0)
-    //     var sections = path.split("/");
-    //     return sections[1] === "demo";
-    // }
     self.getDemoKey = function(){
         return storageService.getItem('DEMOKEY') || null;
     };
@@ -26,17 +21,6 @@ function demoModeService($q, storageService, authService,userService, CONST) {
     self.isDemoMode = function () {
         return storageService.getItem('DEMOKEY') != null;
     };
-
-    // self.registerLoginDemoUser = function(key){
-    //     if (!authService.isAuthed() && key) {
-    //         userService.registerDemoUser(key)
-    //                 .then(function () {
-    //                     return userService.loginDemoUser(key);
-    //                 }, function (res) {
-    //                     console.error(res);
-    //                 });
-    //     }
-    // };
 
     self.registerLoginDemoUser = function(key, resolve){
         if (!authService.isAuthed() && key) {

@@ -6,7 +6,7 @@
                         <ng-md-icon icon="menu"></ng-md-icon>
                     </md-button>
                     <h2>
-                        <span>Link Manager</span>
+                        <md-button ui-sref="main.app.home"> Link Manager</md-button>
                     </h2>
 
                     <md-button ng-href="/explore">Explore</md-button>
@@ -14,6 +14,7 @@
                     <span flex></span>
                     <md-button ng-show="!app.isAuthed" ui-sref="main.login">login</md-button>
                     <md-button ng-show="!app.isAuthed" class="md-raised" ui-sref="main.register">sign up</md-button>
+                    <md-button ng-show="app.isAuthed" class="md-raised" ng-click="app.logout()">logout</md-button>
 
 
         </md-toolbar>

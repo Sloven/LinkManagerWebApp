@@ -47,13 +47,6 @@ function routeConfig($stateProvider) {
                 url: '/',
                 templateUrl:'app/home/home.html'
             })
-            .state('main.app.demo', {
-                url: '/demo',
-                templateUrl: 'app/demo/demo.html',
-                params: {
-                    tryResource: ''
-                }
-            })
             .state('main.app.explore', {
                 url: '/explore',
                 templateUrl: 'app/explore/explore.html'
@@ -66,24 +59,15 @@ function routeConfig($stateProvider) {
                 url: '/editLink',
                 templateUrl: 'app/links/editLink.html'
             })
-            .state('main.app.lookup', {
+            .state('main.app.dashboard', {
                 url: '/{userName}',
-                templateUrl: 'app/lookup/lookup.html',
-                resolve: {
-                    userName: [
-                        '$stateParams', function ($stateParams) {
-                            return $stateParams.userName;
-                        }
-                    ]
-                }
+                templateUrl: 'app/customer/dashboard.html',
+                params:{userName: null}
             })
-            
-                .state('main.app.lookup.addLink', {
+                .state('main.app.dashboard.addLink', {
                     url: '/{linkToAdd:.*}',
-                    templateUrl: 'app/lookup/lookup.html',
-                    onEnter: function ($stateParams, userName) {
-                        $stateParams.userName = userName;
-                    }
+                    templateUrl: 'app/customer/dashboard.html',
+                    params:{linkToAdd:null}
                 });
 }
 

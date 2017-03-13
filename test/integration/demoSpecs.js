@@ -2,12 +2,6 @@ var storageFake = require('../fakes/storageFake');
 var constFake = require('../fakes/CONSTFake');
 var backendMockExport = require('../fakes/backend');
 
-var derr = require('../../sources/app/demo/democontroller');
-var ussr = require('../../sources/app/services/userService');
-var intrc = require('../../sources/app/services/interceptor');
-var auth = require('../../sources/app/services/authService');
-//test
-
 describe('DEMO.specs:', function () {
 
     var $state, $httpBackend, $http, $stateParams, dmc, interceptor, authService, storage, demoModeService;
