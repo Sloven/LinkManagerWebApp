@@ -20,6 +20,7 @@
             var params = self.parseJwt(token);
             return Math.round(new Date().getTime() / 1000) <= params.exp;
         } else {
+            self.logout();
             return false;
         }
     };
